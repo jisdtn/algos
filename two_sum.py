@@ -1,23 +1,19 @@
-def find_two_indexes(data, expected_result):
-    left_pointer = 0
-    right_pointer = len(data) - 1
+# Given an array of integers nums and an integer target,
+# return indices of the two numbers such that they add up to target.
+# You may assume that each input would have exactly one solution,
+# and you may not use the same element twice.
+# You can return the answer in any order.
 
-    while left_pointer < right_pointer:
-        current_sum = data[left_pointer] + data[right_pointer]
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        if not nums:
+            return []
 
-        if current_sum == expected_result:
-            return True
+        prev_map = {}
 
-        if current_sum > expected_result:
-            right_pointer -= 1
+        for i, num in enumerate(nums):
+            diff = target - num
+            if diff in prev_map:
+                return [prev_map[diff], i]
 
-        else:
-            left_pointer += 1
-
-    return False
-
-
-if __name__ == '__main__':
-    data = [1, 2, 3, 4, 5, 6, 7, 11]
-    expected_result = 10
-    print(find_two_indexes(data, expected_result))
+            prev_map[num] = i
