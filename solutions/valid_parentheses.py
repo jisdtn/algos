@@ -6,16 +6,15 @@
 # Open brackets must be closed in the correct order.
 # Every close bracket has a corresponding open bracket of the same type.
 
-class Solution:
-    def isValid(s: str) -> bool:
-        stack = []
-        closetoopen = {")": "(", "]": "[", "}": "{"}
+def isValid(s: str) -> bool:
+    stack = []
+    closetoopen = {")": "(", "]": "[", "}": "{"}
 
-        for i in s:
-            if i in closetoopen:
-                if stack and stack[-1] == closetoopen[i]:
-                    stack.pop()
-                else:
-                    return False
-            else: stack.append(i)
-        return not stack
+    for i in s:
+        if i in closetoopen:
+            if stack and stack[-1] == closetoopen[i]:
+                stack.pop()
+            else:
+                return False
+        else: stack.append(i)
+    return not stack
