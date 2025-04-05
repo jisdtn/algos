@@ -10,7 +10,7 @@ def eraseOverlapIntervals(intervals: List[List[int]]) -> int:
     if len(intervals) <= 1:
         return 0
 
-    intervals.sort(key=lambda x: x[1])
+    intervals.sort(key=lambda x: x[1]) # этот код сортирует список интервалов intervals по второму элементу каждого интервала, то есть по end.
 
     count = 0
     prev_end = float('-inf')
