@@ -1,9 +1,6 @@
 # Definition for singly-linked list.
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
 from typing import Optional
+from utils import linked_list_to_list, list_to_linked_list, ListNode
 
 
 class Solution:
@@ -19,3 +16,9 @@ class Solution:
 
         return prev
 
+
+if __name__ == '__main__':
+    input_list = [1,2,3,4,5]
+    head = list_to_linked_list(input_list)
+    reversed_head = Solution().reverseList(head)
+    print(linked_list_to_list(reversed_head))
