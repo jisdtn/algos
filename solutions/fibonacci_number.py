@@ -10,3 +10,6 @@ def fib(n: int) -> int:
         a, b = b, a + b
     return b
 
+
+if __name__ == '__main__':
+    print(fib(4))

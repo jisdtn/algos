@@ -18,3 +18,7 @@ def isValid(s: str) -> bool:
                 return False
         else: stack.append(i)
     return not stack
+
+
+if __name__ == '__main__':
+    print(isValid('(({{{]}}'))

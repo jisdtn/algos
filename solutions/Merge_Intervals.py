@@ -20,3 +20,7 @@ def merge(intervals: List[List[int]]) -> List[List[int]]:
             merged[-1][1] = max(merged[-1][1], interval[1])
 
     return merged
+
+
+if __name__ == '__main__':
+    print(merge([[1,3],[2,6],[8,10],[15,18]]))

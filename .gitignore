@@ -175,3 +175,5 @@ cython_debug/
 
 solution/endless-counter.py
 solution/valid_brackets.py
+solution/find_two_indexes.py
+
