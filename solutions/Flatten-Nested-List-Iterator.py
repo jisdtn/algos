@@ -2,23 +2,27 @@
 # This is the interface that allows for creating nested lists.
 # You should not implement it, or speculate about its implementation
 # """
-# class NestedInteger:
-#    def isInteger(self) -> bool:
-#        """
-#        @return True if this NestedInteger holds a single integer, rather than a nested list.
-#        """
+from __future__ import annotations
 
-#    def getInteger(self) -> int:
-#        """
-#        @return the single integer that this NestedInteger holds, if it holds a single integer
-#        Return None if this NestedInteger holds a nested list
-#        """
 
-#    def getList(self) -> [NestedInteger]:
-#        """
-#        @return the nested list that this NestedInteger holds, if it holds a nested list
-#        Return None if this NestedInteger holds a single integer
-# """
+class NestedInteger:
+
+    def __init__(self, value):
+        if isinstance(value, int):
+            self._integer = value
+            self._list = None
+        else:
+            self._integer = None
+            self._list = value
+
+    def isInteger(self) -> bool:
+       return self._integer is not None
+
+    def getInteger(self) -> int:
+       return self._integer
+
+    def getList(self) -> list[NestedInteger]:
+       return self._list
 
 class NestedIterator:
     def __init__(self, nestedList: [NestedInteger]):
@@ -35,4 +39,19 @@ class NestedIterator:
             self.stack.pop()
             self.stack.extend(reversed(top.getList()))
         return False
+
+
+def build_nested(data):
+    if isinstance(data, int):
+        return NestedInteger(data)
+    return NestedInteger([build_nested(x) for x in data])
+
+
+if __name__ == '__main__':
+    nested = build_nested([[1,1],2,[1,1]])
+    i, v = NestedIterator(nested.getList()), []
+    while i.hasNext():
+        v.append(i.next())
+    print(v)
+
 
